@@ -3,6 +3,7 @@ import { fetchMovies, fetchTvShows } from "./services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
+import defaultPoster from "./assets/copertina non disponibile.jpg";
 
 function App() {
 
@@ -45,6 +46,12 @@ function App() {
     return `https://flagcdn.com/24x18/${flagCode}.png`;
   }
 
+  const getPosterUrl = (posterPath) => {
+    if (posterPath) {
+      return `https://image.tmdb.org/t/p/w342${posterPath}`;
+    }
+    return defaultPoster;
+  }
   return (
     <div className="app-container">
       <HeaderComponent onSearch={handleSearch} /> {/* Usando il componente Header */}
@@ -56,7 +63,7 @@ function App() {
           movies.map((movie) => (
             <div key={movie.id} className="movie-card">
               <img
-                src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+                src={getPosterUrl(movie.poster_path)}
                 alt={movie.title}
                 className="movie-poster"
               />
@@ -84,7 +91,7 @@ function App() {
           tvShows.map((show) => (
             <div key={show.id} className="movie-card">
               <img
-                src={`https://image.tmdb.org/t/p/w342${show.poster_path}`}
+                src={getPosterUrl(show.poster_path)}
                 alt={show.title}
                 className="movie-poster"
               />
