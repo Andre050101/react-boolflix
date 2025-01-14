@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import SearchBar from "./components/SearchBar";
 import { fetchMovies } from "./services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { GlobalProvider } from "./contexts/GlobalContext";
 import HeaderComponent from "./components/HeaderComponent";
-
 
 function App() {
 
   //Film
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const normalizeLanguageCode = (code) => {
+    const baseLanguage = code.split('-')[0];
+    return baseLanguage;
+  };
 
   const handleSearch = async (query) => {
     setLoading(true);
@@ -26,6 +28,18 @@ function App() {
       setLoading(false);
     }
   };
+
+  const getFlagUrl = (language) => {
+    const flagCode = normalizeLanguageCode(language);
+
+    if (flagCode === 'en') {
+      return 'https://flagcdn.com/24x18/gb.png';
+    }
+    if (flagCode === 'ja') {
+      return 'https://flagcdn.com/24x18/jp.png';
+    }
+    return `https://flagcdn.com/24x18/${flagCode}.png`;
+  }
 
   return (
     <div className="app-container">
@@ -44,7 +58,14 @@ function App() {
               />
               <div className="movie-info">
                 <h3>{movie.title}</h3>
-                <p>Lingua: {movie.original_language}</p>
+                <div className="movie-language">
+                  <img
+                    src={getFlagUrl(movie.original_language)}
+                    alt={movie.original_language}
+                    style={{ width: 20, height: 15 }}
+                  />
+                  <p>{movie.original_language}</p>
+                </div>
                 <p>Voto: {movie.vote_average}</p>
               </div>
             </div>

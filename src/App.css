@@ -101,3 +101,13 @@ body {
 .movie-info p {
     font-size: 14px;
 }
+
+.movie-language {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.movie-language p {
+    margin-left: 5px;
+}
