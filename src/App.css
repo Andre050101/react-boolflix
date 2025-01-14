@@ -12,48 +12,6 @@ body {
     padding: 20px;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #141414;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.logo h1 {
-    font-size: 30px;
-    color: white;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-}
-
-.search-input {
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 20px;
-    width: 250px;
-}
-
-.search-button {
-    background-color: #e50914;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.search-button:hover {
-    background-color: #f40612;
-}
-
 .movie-grid,
 .tv-show-grid {
     display: grid;
@@ -61,6 +19,7 @@ body {
     gap: 20px;
     margin-top: 20px;
     width: 100%;
+    justify-items: center;
 }
 
 .movie-card {
