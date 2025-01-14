@@ -54,7 +54,8 @@ body {
     background-color: #f40612;
 }
 
-.movie-grid {
+.movie-grid,
+.tv-show-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
@@ -106,6 +107,10 @@ body {
     display: flex;
     align-items: center;
     margin-top: 5px;
+}
+
+.movie-language img {
+    margin-right: 5px;
 }
 
 .movie-language p {

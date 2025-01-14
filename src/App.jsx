@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fetchMovies } from "./services/api";
+import { fetchMovies, fetchTvShows } from "./services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
@@ -8,6 +8,7 @@ function App() {
 
   //Film
   const [movies, setMovies] = useState([]);
+  const [tvShows, setTvShows] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const normalizeLanguageCode = (code) => {
@@ -20,6 +21,9 @@ function App() {
     try {
       const data = await fetchMovies(query);
       setMovies(data.results);
+
+      const tvData = await fetchTvShows(query);
+      setTvShows(tvData.results);
     }
     catch (error) {
       console.error("Errore durante la ricerca", error);
@@ -67,6 +71,34 @@ function App() {
                   <p>{movie.original_language}</p>
                 </div>
                 <p>Voto: {movie.vote_average}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>Nessun film trovato.</p>
+        )}
+      </div>
+      <h2>Serie TV</h2>
+      <div className="tv-show-grid">
+        {tvShows.length > 0 ? (
+          tvShows.map((show) => (
+            <div key={show.id} className="movie-card">
+              <img
+                src={`https://image.tmdb.org/t/p/w342${show.poster_path}`}
+                alt={show.title}
+                className="movie-poster"
+              />
+              <div className="movie-info">
+                <h3>{show.title}</h3>
+                <div className="movie-language">
+                  <img
+                    src={getFlagUrl(show.original_language)}
+                    alt={show.original_language}
+                    style={{ width: 20, height: 15 }}
+                  />
+                  <p>{show.original_language}</p>
+                </div>
+                <p>Voto: {show.vote_average}</p>
               </div>
             </div>
           ))
