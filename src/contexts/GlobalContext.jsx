@@ -1,43 +1,33 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
-const apiUrl = import.meta.env.VITE_API_URL;
+import React, { createContext, useState, useContext } from "react";
+import { fetchMovies, fetchTvShows } from "../services/api";
 
 const GlobalContext = createContext();
-const initialData = { type: "", message: "" };
-const GlobalProvider = ({ children }) => {
-  const [alertData, setAlertData] = useState(initialData);
-  const [ingredientList, setIngredientList] = useState([]);
-  useEffect(() => {
-    //console.log("E' stato eseguito use effect");
-    getIngredients();
-    //return () => console.log("cleanup");
-  }, []);
-  //console.log("E' stato eseguito use effect");
 
-  function getIngredients() {
-    axios
-      .get(apiUrl + "/ingredients")
-      .then((res) => {
-        //console.log(res.data);
-        setIngredientList(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        // always executed
-      });
-  }
+export const GlobalProvider = ({ children }) => {
+  const [movies, setMovies] = useState([]);
+  const [tvShows, setTvShows] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleSearch = async (query) => {
+    setLoading(true);
+    try {
+      const movieData = await fetchMovies(query);
+      setMovies(movieData.results);
+
+      const tvData = await fetchTvShows(query);
+      setTvShows(tvData.results);
+    }
+    catch {
+      console.error("Errore durante la ricerca", error);
+    }
+    finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <GlobalContext.Provider value={{ alertData, setAlertData, ingredientList }}>
+    <GlobalContext.Provider value={{ movies, tvShows, loading, handleSearch }}>
       {children}
     </GlobalContext.Provider>
   );
 };
-
-function useGlobalContext() {
-  const context = useContext(GlobalContext);
-  return context;
-}
-
-export { GlobalProvider, useGlobalContext };
