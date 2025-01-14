@@ -54,6 +54,22 @@ function App() {
     }
     return defaultPoster;
   }
+
+
+  const renderStars = (vote) => {
+    const stars = Math.ceil(vote / 2);
+    return (
+      <div className="stars">
+        {Array.from({ length: 5 }, (_, index) => (
+          <i
+            key={index}
+            className={index < stars ? "fas fa-star" : "far fa-star"} // Stelle piene o vuote
+            style={{ color: "#FFD700", marginRight: "5px" }}
+          ></i>
+        ))}
+      </div>
+    );
+  };
   return (
     <div className="app-container">
       <HeaderComponent onSearch={handleSearch} /> {/* Usando il componente Header */}
@@ -77,9 +93,8 @@ function App() {
                     alt={movie.original_language}
                     style={{ width: 20, height: 15 }}
                   />
-                  <p>{movie.original_language}</p>
                 </div>
-                <p>Voto: {movie.vote_average}</p>
+                <p>Voto: {renderStars(movie.vote_average)}</p>
               </div>
             </div>
           ))
@@ -105,9 +120,8 @@ function App() {
                     alt={show.original_language}
                     style={{ width: 20, height: 15 }}
                   />
-                  <p>{show.original_language}</p>
                 </div>
-                <p>Voto: {show.vote_average}</p>
+                <p>Voto: {renderStars(show.vote_average)}</p>
               </div>
             </div>
           ))

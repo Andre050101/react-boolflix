@@ -116,3 +116,8 @@ body {
 .movie-language p {
     margin-left: 5px;
 }
+
+.stars {
+    display: flex;
+    gap: 5px;
+}
