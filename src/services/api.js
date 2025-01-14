@@ -21,3 +21,21 @@ export const fetchMovies = async (query, language = "it-IT") => {
     }
 
 }
+
+export const fetchTvShows = async (query, language = "it-IT") => {
+    try {
+        const response = await axios
+            .get(`${BASE_URL}/search/tv`, {
+                params: {
+                    api_key: API_KEY,
+                    query,
+                    language,
+                },
+            });
+        return response.data;
+    }
+    catch (error) {
+        console.error("Errore durante la chiamata API:", error);
+        throw error;
+    }
+};
