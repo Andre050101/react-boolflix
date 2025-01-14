@@ -44,7 +44,7 @@ function App() {
               />
               <div className="movie-info">
                 <h3>{movie.title}</h3>
-                <p>Lingua: {movie.language}</p>
+                <p>Lingua: {movie.original_language}</p>
                 <p>Voto: {movie.vote_average}</p>
               </div>
             </div>
