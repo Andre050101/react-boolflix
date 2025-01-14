@@ -94,7 +94,7 @@ function App() {
                     style={{ width: 20, height: 15 }}
                   />
                 </div>
-                <p>Voto: {renderStars(movie.vote_average)}</p>
+                <div>Voto: {renderStars(movie.vote_average)}</div>
               </div>
             </div>
           ))
@@ -121,7 +121,7 @@ function App() {
                     style={{ width: 20, height: 15 }}
                   />
                 </div>
-                <p>Voto: {renderStars(show.vote_average)}</p>
+                <div>Voto: {renderStars(show.vote_average)}</div>
               </div>
             </div>
           ))
