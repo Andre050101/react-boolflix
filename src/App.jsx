@@ -47,8 +47,10 @@ function App() {
   }
 
   const getPosterUrl = (posterPath) => {
+    const baseUrl = 'https://image.tmdb.org/t/p/';
+    const size = 'w342';
     if (posterPath) {
-      return `https://image.tmdb.org/t/p/w342${posterPath}`;
+      return `${baseUrl}${size}${posterPath}`;
     }
     return defaultPoster;
   }
