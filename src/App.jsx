@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { GlobalProvider, useGlobalContext } from "./contexts/GlobalContext";
 import { fetchMovies, fetchTvShows } from "./services/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -7,31 +8,11 @@ import defaultPoster from "./assets/copertina non disponibile.jpg";
 
 function App() {
 
-  //Film
-  const [movies, setMovies] = useState([]);
-  const [tvShows, setTvShows] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { movies, tvShows, loading, handleSearch } = useGlobalContext();
 
   const normalizeLanguageCode = (code) => {
     const baseLanguage = code.split('-')[0];
     return baseLanguage;
-  };
-
-  const handleSearch = async (query) => {
-    setLoading(true);
-    try {
-      const data = await fetchMovies(query);
-      setMovies(data.results);
-
-      const tvData = await fetchTvShows(query);
-      setTvShows(tvData.results);
-    }
-    catch (error) {
-      console.error("Errore durante la ricerca", error);
-    }
-    finally {
-      setLoading(false);
-    }
   };
 
   const getFlagUrl = (language) => {
@@ -133,4 +114,11 @@ function App() {
   );
 };
 
-export default App;
+export default () => {
+  return (
+    <GlobalProvider>
+      <App />
+    </GlobalProvider>
+  );
+
+}
