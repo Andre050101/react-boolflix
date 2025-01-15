@@ -2,18 +2,19 @@ import React from "react";
 import { getPosterUrl, getFlagUrl } from "../utils/utils";
 import defaultPoster from "../assets/copertina non disponibile.jpg";
 import Stars from "./Stars";
+import styles from "./Card.module.css";
 
 const Card = ({ data }) => {
     return (
-        <div className="movie-card">
+        <div className={styles.card}>
             <img
                 src={getPosterUrl(data.poster_path, defaultPoster)}
                 alt={data.title || data.name}
-                className="movie-poster"
+                className={styles.poster}
             />
-            <div className="movie-info">
+            <div className={styles.info}>
                 <h3>{data.title || data.name}</h3>
-                <div className="movie-language">
+                <div className={styles.language}>
                     <img
                         src={getFlagUrl(data.original_language)}
                         alt={data.original_language}

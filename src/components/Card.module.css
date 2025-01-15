@@ -1,0 +1,54 @@
+.card {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.card:hover .info {
+    opacity: 1;
+}
+
+.poster {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.info h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.info p {
+    font-size: 14px;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.language img {
+    margin-right: 5px;
+}
+
+.language p {
+    margin-left: 5px;
+}
