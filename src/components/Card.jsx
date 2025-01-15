@@ -8,11 +8,11 @@ const Card = ({ data }) => {
         <div className="movie-card">
             <img
                 src={getPosterUrl(data.poster_path, defaultPoster)}
-                alt={data.title}
+                alt={data.title || data.name}
                 className="movie-poster"
             />
             <div className="movie-info">
-                <h3>{data.title}</h3>
+                <h3>{data.title || data.name}</h3>
                 <div className="movie-language">
                     <img
                         src={getFlagUrl(data.original_language)}
