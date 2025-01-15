@@ -1,16 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Styles from "./SearchBar.module.css";
 
-const SearchBar = ({ onSearch }) => {
-    //Stato della query
-    const [query, setQuery] = useState("");
-
-    //Gestione input utente
-    const handleInputChange = (event) => {
-        setQuery(event.target.value);
-    };
-
-    //Gestione ricerca
+const SearchBar = ({ onSearch, query, onInputChange }) => {
     const handleSearch = (event) => {
         event.preventDefault();
         if (query.trim() !== "") {
@@ -23,7 +14,7 @@ const SearchBar = ({ onSearch }) => {
             <input
                 type="text"
                 value={query}
-                onChange={handleInputChange}
+                onChange={onInputChange}
                 placeholder="Cerca un film/serie tv..."
                 className={Styles.searchInput}
             />

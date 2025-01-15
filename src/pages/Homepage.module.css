@@ -4,3 +4,16 @@
     align-items: center;
     padding: 20px;
 }
+
+.centerMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
+    color: #ccc;
+}
+
+.centerMessage h2 {
+    font-size: 24px;
+}

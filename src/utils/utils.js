@@ -1,3 +1,4 @@
+import defaultPoster from '../assets/copertina non disponibile.jpg';
 export const normalizeLanguageCode = (code) => {
     const baseLanguage = code.split('-')[0];
     return baseLanguage;
