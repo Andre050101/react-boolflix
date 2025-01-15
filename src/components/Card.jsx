@@ -17,6 +17,7 @@ const Card = ({ data }) => {
                 <p><strong>Anno: </strong>{truncateCharacters(data.release_date || data.first_air_date || "", 4)}</p>
                 <p><strong>Descrizione:</strong> {truncateDescription(data.overview, 12)}</p>
                 <div className={styles.language}>
+                    <p><strong>Lingua originale:</strong></p>
                     <img
                         src={getFlagUrl(data.original_language)}
                         alt={data.original_language}
