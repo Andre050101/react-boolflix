@@ -10,7 +10,15 @@ export const getFlagUrl = (language) => {
     if (flagCode === 'en') return 'https://flagcdn.com/24x18/gb.png';
     if (flagCode === 'ja') return 'https://flagcdn.com/24x18/jp.png';
 
-    return `https://flagcdn.com/24x18/${flagCode}.png`;
+    const availableFlags = [
+        "en", "es", "fr", "de", "it", "pt", "ru", "zh", "ja", "ko", "ar", "hi", "bn", "pa", "pl", "ro", "tr", "vi", "sv", "no",
+        "da", "fi", "nl", "el", "cs", "hu", "he", "th", "id", "ms", "sw", "ta", "ml", "mr", "te", "gu", "kn", "ml", "sr", "hr",
+        "sk", "bg", "uk", "sr", "lt", "lv", "et", "sq", "mk", "ka"
+    ];
+    if (availableFlags.includes(flagCode)) {
+        return `https://flagcdn.com/24x18/${flagCode}.png`;
+    }
+    return null;
 }
 
 export const getPosterUrl = (posterPath) => {
