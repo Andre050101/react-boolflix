@@ -30,6 +30,10 @@ export const truncateDescription = (text, limit) => {
 };
 
 export const truncateCharacters = (text, limit) => {
+    const fallback = "Non disponibile";
+    if (!text || typeof text !== "string") {
+        return fallback;
+    }
     const char = text.split('');
     if (char.length > limit) {
         return char.slice(0, limit).join('');

@@ -14,7 +14,7 @@ const Card = ({ data }) => {
             />
             <div className={styles.info}>
                 <h3><strong>Titolo:</strong> {data.title || data.name}</h3>
-                <p><strong>Anno: </strong>{truncateCharacters(data.release_date || data.first_air_date, 4)}</p>
+                <p><strong>Anno: </strong>{truncateCharacters(data.release_date || data.first_air_date || "", 4)}</p>
                 <p><strong>Descrizione:</strong> {truncateDescription(data.overview, 12)}</p>
                 <div className={styles.language}>
                     <img
