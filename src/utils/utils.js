@@ -21,6 +21,14 @@ export const getPosterUrl = (posterPath) => {
     return defaultPoster;
 }
 
+export const getPosterUrlforModal = (posterPath) => {
+    const baseUrl = 'https://image.tmdb.org/t/p/';
+    const size = 'w342';
+    if (posterPath) return `${baseUrl}${size}${posterPath}`;
+
+    return null;
+}
+
 export const truncateDescription = (text, limit) => {
     const words = text.split(' ');
     if (words.length > limit) {
