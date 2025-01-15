@@ -1,5 +1,5 @@
 import React from "react";
-import { getPosterUrl, getFlagUrl, truncateDescription } from "../utils/utils";
+import { getPosterUrl, getFlagUrl, truncateDescription, truncateCharacters } from "../utils/utils";
 import defaultPoster from "../assets/copertina non disponibile.jpg";
 import Stars from "./Stars";
 import styles from "./Card.module.css";
@@ -14,7 +14,8 @@ const Card = ({ data }) => {
             />
             <div className={styles.info}>
                 <h3><strong>Titolo:</strong> {data.title || data.name}</h3>
-                <p><strong>Descrizione:</strong> {truncateDescription(data.overview, 25)}</p>
+                <p><strong>Anno: </strong>{truncateCharacters(data.release_date || data.first_air_date, 4)}</p>
+                <p><strong>Descrizione:</strong> {truncateDescription(data.overview, 12)}</p>
                 <div className={styles.language}>
                     <img
                         src={getFlagUrl(data.original_language)}

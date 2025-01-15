@@ -28,3 +28,11 @@ export const truncateDescription = (text, limit) => {
     }
     return text;
 };
+
+export const truncateCharacters = (text, limit) => {
+    const char = text.split('');
+    if (char.length > limit) {
+        return char.slice(0, limit).join('');
+    }
+    return text;
+}

@@ -41,6 +41,8 @@
 
 .info p {
     font-size: 14px;
+    margin: 0;
+    line-height: 1.5;
 }
 
 .language {
@@ -58,6 +60,7 @@
 .language p {
     margin-left: 5px;
 }
+
 
 .flag {
     width: 2rem;

@@ -4,8 +4,3 @@ body {
     color: white;
     margin: 0;
 }
-
-.stars {
-    display: flex;
-    gap: 5px;
-}

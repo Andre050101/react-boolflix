@@ -1,9 +1,9 @@
 import React from "react";
-
+import styles from "./Stars.module.css";
 const Stars = ({ vote }) => {
     const stars = Math.ceil(vote / 2);
     return (
-        <div className="stars">
+        <div className={styles.stars}>
             {Array.from({ length: 5 }, (_, index) => (
                 <i
                     key={index}
