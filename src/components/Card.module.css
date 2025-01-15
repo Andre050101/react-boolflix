@@ -46,7 +46,9 @@
 .language {
     display: flex;
     align-items: center;
-    margin-top: 5px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .language img {
@@ -55,4 +57,16 @@
 
 .language p {
     margin-left: 5px;
+}
+
+.flag {
+    width: 2rem;
+    height: auto;
+}
+
+.flagContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    justify-content: center;
 }

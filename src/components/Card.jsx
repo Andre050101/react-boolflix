@@ -19,7 +19,7 @@ const Card = ({ data }) => {
                     <img
                         src={getFlagUrl(data.original_language)}
                         alt={data.original_language}
-                        style={{ width: 20, height: 15 }}
+                        className={styles.flag}
                     />
                 </div>
                 <Stars vote={data.vote_average} />
