@@ -21,3 +21,10 @@ export const getPosterUrl = (posterPath) => {
     return defaultPoster;
 }
 
+export const truncateDescription = (text, limit) => {
+    const words = text.split(' ');
+    if (words.length > limit) {
+        return words.slice(0, limit).join(' ') + '...';
+    }
+    return text;
+};
